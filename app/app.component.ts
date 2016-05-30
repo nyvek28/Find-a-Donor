@@ -1,22 +1,20 @@
 import {Component} from 'angular2/core';
-import {CoursesComponent} from './courses.component';
 import {AuthorsComponent} from './authors.component';
-import {StarComponent} from './star.component';
 
 @Component({
     selector: 'my-app',
     template: `<h1>{{title}}</h1>
-                <courses></courses>
                 <authors></authors>
-                <star></star>
+                <authors></authors>
+                <authors></authors>
                 `,
-    directives: [CoursesComponent, AuthorsComponent, StarComponent]
+    directives: [AuthorsComponent]
 })
 export class AppComponent {
   title: string;
 
   constructor(){
-    this.title = 'Angular 2 App';
+    this.title = 'Kevyn Quiros';
   }
 
 }

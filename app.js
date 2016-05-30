@@ -7,12 +7,15 @@ var mongoose = require('mongoose');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var routes = require('./routes/index');
+var routes = require('./routes/donors');
 var port = 8080;
+var Donor = require('./models/donor');
 var connections = [];
 
-server.listen(port);
-mongoose.connect('mongodb://localhost/donor_test');
+server.listen(8000);
+
+//Refactor!!!
+mongoose.connect('mongodb://localhost/donor');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -28,8 +31,31 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// app.listen(port,function(){
-//   console.log('Magic happens at port ' + port);
+
+/////Testing!
+// var Dan = new Donor({
+//   firstName: 'Dan',
+//   lastName: 'Jones',
+//   email: 'dan@jones.com',
+//   address: 'New York',
+//   phone: '99098876'
 // });
+//
+// Dan.save(function(err){
+//   if(err) throw err;
+//
+//   console.log(Dan.firstName + ' ' + Dan.lastName + ' was saved!');
+// });
+//
+// Donor.find({}, function(err, donors){
+//   if(err) throw err;
+//
+//   console.log(donors);
+// });
+//////
+
+app.listen(port,function(){
+  console.log('Magic happens at port ' + port);
+});
 
 module.exports = app;
